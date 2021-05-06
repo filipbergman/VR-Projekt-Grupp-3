@@ -14,21 +14,24 @@ public class Robot : MonoBehaviour
         searching
     }
 
-    [Header("Settings")]
+    [Header("Setup")]
     [Tooltip("The actual GameObject that the robot will target. Must have a collider.")]
     public GameObject target;
     public GameObject[] controlPoints;
-    public float fieldOfView = 45;
-    public float searchTimer = 5f;
-    public float sightDist = 100f;
+    [Header("Settings")]
     public float patrollSpeed = 2f;
     public float chaseSpeed = 4f;
     public float searchRotationSpeed = 30f;
-
+    public float fieldOfView = 45;
+    public float searchTimer = 5f;
+    public float proximityDist = 3f;
+    public float contactDist = 0.5f;
+    public float sightDist = 100f;
     public float controlPointDistBias = 0.1f;
 
     [Header("Debug")]
     public STATE robotState = STATE.patrolling;
+    public bool visualContact = false;
     public bool showRay = false;
     public bool showControlPoints = false;
 
@@ -75,12 +78,17 @@ public class Robot : MonoBehaviour
                 break;
         }
 
+        if (visualContact)
+            indicatorSphere.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.yellow);
+        else
+            indicatorSphere.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.black);
+
         HandleDetection();
     }
 
     private void Chase()
     {
-        StopCoroutine(SearchTimerRoutine());
+        StopAllCoroutines();
         agent.isStopped = false;
 
         agent.SetDestination(targetLastSeenAt);
@@ -103,7 +111,7 @@ public class Robot : MonoBehaviour
 
     private void Patroll()
     {
-        StopCoroutine(SearchTimerRoutine());
+        StopAllCoroutines();
         agent.isStopped = false;
         agent.speed = patrollSpeed;
 
@@ -123,7 +131,7 @@ public class Robot : MonoBehaviour
     {
         RaycastHit hit;
 
-        Vector3 rayOrigin = transform.position + Vector3.up * 2;
+        Vector3 rayOrigin = transform.position;// + Vector3.up * 2;
 
         Vector3 toTarget = (target.transform.position - rayOrigin) + (Vector3.up * 0.5f);
         float angleToTarget = Vector3.Angle(transform.forward, toTarget);
@@ -131,35 +139,34 @@ public class Robot : MonoBehaviour
         //DEBUG
         if (showRay)
             Debug.DrawRay(rayOrigin, toTarget, Color.red);
-        
-        if (angleToTarget < fieldOfView)
+
+        if (Physics.Raycast(rayOrigin, toTarget, out hit, sightDist))
         {
-            if (Physics.Raycast(rayOrigin, toTarget, out hit, sightDist))
+            if (hit.collider.gameObject.transform.root.name == target.transform.root.name)
             {
-                if (hit.collider.gameObject.transform.root.name == "Player")
-                {
-                    targetLastSeenAt = hit.collider.gameObject.transform.position;
-
-                    TargetSpotted();
-
-                    //DEBUG
-                    indicatorSphere.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.yellow);
-                }
-
-                //DEBUG
+                if (Vector3.Distance(transform.position, hit.collider.gameObject.transform.position) < contactDist)
+                    Contact();
+                
+                if ((angleToTarget < fieldOfView) || (Vector3.Distance(transform.position, target.transform.position) < proximityDist))
+                    TargetSpotted(hit.collider.gameObject.transform.position);
                 else
-                    indicatorSphere.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.black);
+                    visualContact = false;
             }
+            else
+                visualContact = false;
         }
-
-        //DEBUG-------
-        else
-            indicatorSphere.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.black);
     }
 
-    private void TargetSpotted()
+    private void Contact()
+    {
+        Debug.Log("Robot contact with target!");
+    }
+
+    private void TargetSpotted(Vector3 pos)
     {
         Debug.Log("Player spotted!");
+        visualContact = true;
+        targetLastSeenAt = pos; 
         robotState = STATE.chasing;
     }
 

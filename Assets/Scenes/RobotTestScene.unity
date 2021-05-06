@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.9
+      value: 12.72
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.76
+      value: 40.94
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1467,6 +1467,18 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1125756944}
+    - target: {fileID: 8481020157248916129, guid: a710f7c5867f23340bd1d56ce15ccff7, type: 3}
+      propertyPath: showRay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481020157248916129, guid: a710f7c5867f23340bd1d56ce15ccff7, type: 3}
+      propertyPath: contactDist
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481020157248916129, guid: a710f7c5867f23340bd1d56ce15ccff7, type: 3}
+      propertyPath: proximityDist
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8481020157248916129, guid: a710f7c5867f23340bd1d56ce15ccff7, type: 3}
       propertyPath: controlPoints.Array.data[0]
       value: 
