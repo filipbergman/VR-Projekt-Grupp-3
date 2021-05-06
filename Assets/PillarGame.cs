@@ -26,7 +26,7 @@ public class PillarGame : MonoBehaviour
         {
             if(currMover.transform.localPosition.z > 0.213f && currMover.transform.localPosition.z < 0.298f) 
             {
-                if(moveIndex < 3) 
+                if (moveIndex < 3) 
                 {
                     currPillar = pillars[++moveIndex];
                     currMover = pillars[moveIndex].transform.GetChild(0).gameObject;
@@ -52,7 +52,7 @@ public class PillarGame : MonoBehaviour
         if(!won) 
         {
             Vector3 currPos = currMover.transform.localPosition;
-            currMover.transform.localPosition = new Vector3(currPos.x, currPos.y, currPos.z + 0.01f * moveUp);
+            currMover.transform.localPosition = new Vector3(currPos.x, currPos.y, currPos.z + moveUp * Time.deltaTime);
         }
     }
 }
