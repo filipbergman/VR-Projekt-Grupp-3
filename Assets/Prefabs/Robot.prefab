@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8481020157248916158}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 3.48, y: 1.23, z: 25.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -139,15 +139,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  fieldOfView: 45
-  searchTimer: 8
-  sightDist: 100
   patrollSpeed: 2
   chaseSpeed: 4
   searchRotationSpeed: 30
+  fieldOfView: 45
+  searchTimer: 8
+  proximityDist: 5
+  contactDist: 5
+  sightDist: 100
   controlPointDistBias: 1
   robotState: 0
-  showRay: 0
+  visualContact: 0
+  showRay: 1
   showControlPoints: 0
 --- !u!1 &8481020157914243777
 GameObject:
