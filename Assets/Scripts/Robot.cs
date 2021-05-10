@@ -15,11 +15,9 @@ public class Robot : MonoBehaviour
     }
 
     [Header("Setup")]
-    [Tooltip("The actual GameObject that the robot will target. Must have a collider.")]
-    public GameObject target;
     public GameObject[] controlPoints;
     [Header("Settings")]
-    public float patrollSpeed = 2f;
+    public float patrolSpeed = 2f;
     public float chaseSpeed = 4f;
     public float searchRotationSpeed = 30f;
     public float fieldOfView = 45;
@@ -36,6 +34,7 @@ public class Robot : MonoBehaviour
     public bool showControlPoints = false;
 
     private NavMeshAgent agent;
+    private GameObject target;
     private GameObject indicatorSphere;
     private int currentControlPointIndex = 0;
     private GameObject currentControlPoint;
@@ -45,6 +44,7 @@ public class Robot : MonoBehaviour
     void Start()
     {
         agent = transform.GetComponent<NavMeshAgent>();
+        target = transform.Find("SteamVRObjects").Find("VRCamera").Find("CameraCollider").gameObject;
 
         if (controlPoints.Length < 1)
             Debug.LogError("Please add at least one Control Point!");
@@ -113,7 +113,7 @@ public class Robot : MonoBehaviour
     {
         StopAllCoroutines();
         agent.isStopped = false;
-        agent.speed = patrollSpeed;
+        agent.speed = patrolSpeed;
 
         if (!(Vector3.Distance(transform.position, currentControlPoint.transform.position) < controlPointDistBias))
             agent.SetDestination(currentControlPoint.transform.position);
@@ -131,7 +131,7 @@ public class Robot : MonoBehaviour
     {
         RaycastHit hit;
 
-        Vector3 rayOrigin = transform.position;// + Vector3.up * 2;
+        Vector3 rayOrigin = transform.position;
 
         Vector3 toTarget = (target.transform.position - rayOrigin) + (Vector3.up * 0.5f);
         float angleToTarget = Vector3.Angle(transform.forward, toTarget);
