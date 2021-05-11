@@ -44,7 +44,7 @@ public class Robot : MonoBehaviour
     void Start()
     {
         agent = transform.GetComponent<NavMeshAgent>();
-        target = transform.Find("SteamVRObjects").Find("VRCamera").Find("CameraCollider").gameObject;
+        target = GameObject.Find("Player").transform.Find("SteamVRObjects").Find("VRCamera").Find("CameraCollider").gameObject;
 
         if (controlPoints.Length < 1)
             Debug.LogError("Please add at least one Control Point!");
