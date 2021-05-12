@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class damageDealer : MonoBehaviour
@@ -20,12 +21,7 @@ public class damageDealer : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
-        if (other.gameObject.tag == "Player")
-        {
-
-            //do stuff here
-
-        }
+        SceneManager.LoadScene("level6");
+        
     }
 }

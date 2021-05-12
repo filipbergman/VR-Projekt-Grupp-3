@@ -22,7 +22,7 @@ public class spearRelease : MonoBehaviour
         pointB = trans.localPosition;
         pointB.y += 2f;
         moving = false;
-        time = 1;
+        time = 5f;
         to = pointB;
         from = pointA;
         t = 0f;
@@ -43,10 +43,14 @@ public class spearRelease : MonoBehaviour
 
                 
             }
+            else{
+                moving = false;
+                t = 0;
+            }
 
-            moving = false;
+            
         }
-        if (triggerd)
+        if (triggerd && !moving)
         {
             resetTime -= Time.deltaTime;
             if(resetTime < 0)
@@ -75,12 +79,7 @@ public class spearRelease : MonoBehaviour
             to = pointB;
             from = pointA;
         }
-        else
-        {
-            moving = true;
-            to = pointA;
-            from = pointB;
-        }
+        
 
     }
 

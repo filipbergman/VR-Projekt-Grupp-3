@@ -10,10 +10,12 @@ public class TrapRelease : MonoBehaviour
     private Quaternion trapOpen;
     private Quaternion trapClosed;
     public float fullyOpen = 180f;
-    public float speed = 3f;
+    public float speed = 10f;
     private float startTime = 0f;
     public float resetTime = 3f;
     public bool armed = true;
+
+    private bool moving = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,37 +26,47 @@ public class TrapRelease : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (armed)
-        {
-            if (startTime > 0f)
-            {
-                if (triggerd)
-                    transform.localRotation = Quaternion.Lerp(trapClosed, trapOpen, (Time.time - startTime) * speed);
-                else
-                    transform.localRotation = Quaternion.Lerp(trapOpen, trapClosed, (Time.time - startTime) * speed);
+
+        if(moving && triggerd){
+            if(startTime < 1f){
+                startTime += Time.deltaTime / speed;
+                transform.localRotation = Quaternion.Lerp(trapClosed, trapOpen, startTime);
             }
-            if (triggerd)
-            {
-                resetTime -= Time.deltaTime;
-                if (resetTime < 0)
-                {
-                    triggerd = false;
-                    startTime = Time.time;
-                }
+            else{
+                moving = false;
+                startTime = 0;
             }
         }
-        
+        if(triggerd && !moving){
+            resetTime -= Time.deltaTime / speed;
+            if(resetTime < 0){
+                resetTime = 3f;
+                triggerd = false;
+                moving = true;
+            }
+        }
+        if(moving && !triggerd){
+            if(startTime < 1f){
+                startTime += Time.deltaTime / speed;
+                transform.localRotation = Quaternion.Lerp(trapOpen, trapClosed, startTime);
+            }
+            else{
+                moving = false;
+                startTime = 0f;
+            }
+        }
 
+        
     }
 
 
 
     void OnTriggerEnter()
     {
-        if (armed)
+        if (armed && !moving)
         {
             triggerd = !triggerd;
-            startTime = Time.time;
+            moving = true;
         }
         
     }
