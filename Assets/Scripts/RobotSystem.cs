@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RobotSystem : MonoBehaviour
 {
+    /*
     [Header("General")]
     public float moveSpeed = 1f;
     public float acceleration = 1f;
@@ -30,7 +31,7 @@ public class RobotSystem : MonoBehaviour
     
     private GameObject indicatorSphere;
     
-    private Transform robotTransform;
+    private Robot robot;
     private int currentControlPointIndex = 0;
     private GameObject currentControlPoint;
     private bool forwardDirection;
@@ -39,7 +40,7 @@ public class RobotSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        robotTransform = gameObject.transform.Find("Robot");
+        robot = gameObject.transform.Find("Robot").GetComponent<Robot>();
 
         if (controlPoints.Length < 1)
             Debug.LogError("Please add at least one Control Point!");
@@ -67,12 +68,14 @@ public class RobotSystem : MonoBehaviour
 
     private void HandleMovement()
     {
+
+
         //Don't move the robot if it is rotating
-        if (!isRotating)
+        /*if (!isRotating)
         {
             float speed = moveSpeed;
 
-            if (Vector3.Distance(robotTransform.position, currentControlPoint.transform.position) < decelerationDistance)
+            if (Vector3.Distance(robot.position, currentControlPoint.transform.position) < decelerationDistance)
             {
                 speed = 0;
 
@@ -80,40 +83,41 @@ public class RobotSystem : MonoBehaviour
                     UpdateControlPoint();
             }
 
-            Vector3 direction = (currentControlPoint.transform.position - robotTransform.position).normalized;
+            Vector3 direction = (currentControlPoint.transform.position - robot.position).normalized;
 
             currentSpeed = Mathf.Lerp(currentSpeed, speed, acceleration * Time.deltaTime);
 
-            robotTransform.position += direction * currentSpeed * Time.deltaTime;
+            robot.position += direction * currentSpeed * Time.deltaTime;
         }
         //Rotate
         else
         {
-            Quaternion currentRobotRotation = robotTransform.rotation;
-            Quaternion targetRobotRotation = currentRobotRotation * Quaternion.FromToRotation(robotTransform.forward, currentControlPoint.transform.position - robotTransform.position);
+            Quaternion currentRobotRotation = robot.rotation;
+            Quaternion targetRobotRotation = currentRobotRotation * Quaternion.FromToRotation(robot.forward, currentControlPoint.transform.position - robot.position);
 
-            robotTransform.rotation = Quaternion.RotateTowards(currentRobotRotation, targetRobotRotation, turnSpeed * Time.deltaTime);
+            robot.rotation = Quaternion.RotateTowards(currentRobotRotation, targetRobotRotation, turnSpeed * Time.deltaTime);
 
             //Stop rotating when the robot is facing the current control point
             if (Math.Abs(currentRobotRotation.eulerAngles.y - targetRobotRotation.eulerAngles.y) < controlPointRotBias)
                 isRotating = false;
         }
+        
     }
 
     private void HandleDetection()
     {
         RaycastHit hit;
 
-        Vector3 toPlayer = (targetPlayer.transform.position - robotTransform.position) + (Vector3.up * 0.5f);
-        float angleToPlayer = Vector3.Angle(robotTransform.forward, toPlayer);
+        Vector3 toPlayer = (targetPlayer.transform.position - robot.position) + (Vector3.up * 0.5f);
+        float angleToPlayer = Vector3.Angle(robot.forward, toPlayer);
 
         if (angleToPlayer < fieldOfView)
         {
-            if (Physics.Raycast(robotTransform.position, toPlayer, out hit, sightDist))
+            if (Physics.Raycast(robot.position, toPlayer, out hit, sightDist))
             {
                 //DEBUG-------
                 if (showRay)
-                    Debug.DrawRay(robotTransform.position, toPlayer, Color.red);
+                    Debug.DrawRay(robot.position, toPlayer, Color.red);
                 //------------
 
                 if (hit.collider.gameObject.transform.root.name == "Player")
@@ -175,4 +179,5 @@ public class RobotSystem : MonoBehaviour
         //Start rotating towards the new control point
         isRotating = true;
     }
+    */
 }
