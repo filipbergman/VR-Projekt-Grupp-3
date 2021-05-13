@@ -64,10 +64,10 @@ public class spearRelease : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
-        if (armed)
-        {
+        
+            if (armed) {
             triggerd = !triggerd;
         }
         
@@ -80,7 +80,6 @@ public class spearRelease : MonoBehaviour
             from = pointA;
         }
         
-
     }
 
     public void armTrap()

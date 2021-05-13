@@ -8,15 +8,17 @@ public class BallDispencer : MonoBehaviour
     public GameObject ball;
     public GameObject dispenser;
 
-    
     void Start()
     {
-        GameObject newBall = Instantiate(ball, dispenser.transform.position, dispenser.transform.rotation);
+        //Instantiate(ball, dispenser.transform.position, dispenser.transform.rotation);
+        //ball.GetComponent<Rigidbody>().AddForce(dispenser.transform.right*100);
     }
 
     //Upon collision with another GameObject, this GameObject will reverse direction
     private void OnTriggerEnter(Collider other)
     {
-        GameObject newBall = Instantiate(ball, transform.position, transform.rotation);
+        //Instantiate(ball, transform.position, transform.rotation);
+        //ball.GetComponent<Rigidbody>().AddForce(dispenser.transform.forward);
+        
     }
 }

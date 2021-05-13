@@ -21,7 +21,9 @@ public class damageDealer : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if(other.gameObject.transform.root.name == "Player"){
         SceneManager.LoadScene("level6");
+        }
         
     }
 }
