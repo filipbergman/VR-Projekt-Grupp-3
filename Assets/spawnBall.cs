@@ -9,7 +9,7 @@ public class spawnBall : MonoBehaviour
     public float coolDown = 3f;
     public GameObject dispenser;
     
-    private bool ballReady = false;
+    public bool ballReady = true;
     void Update() {
         Debug.Log("Ball Ready: " + ballReady);
     }

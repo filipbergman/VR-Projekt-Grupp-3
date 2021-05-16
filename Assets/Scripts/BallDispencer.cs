@@ -8,15 +8,35 @@ public class BallDispencer : MonoBehaviour
     public GameObject ball;
     public GameObject dispenser;
 
+    public float resetTime = 3f;
+
+    public bool triggerd = false;
+
     void Start()
     {
-        //Instantiate(ball, dispenser.transform.position, dispenser.transform.rotation);
-        //ball.GetComponent<Rigidbody>().AddForce(dispenser.transform.right*100);
+        Instantiate(ball, dispenser.transform.position, dispenser.transform.rotation);
+        ball.GetComponent<Rigidbody>().AddForce(dispenser.transform.right*100);
+        
     }
 
-    //Upon collision with another GameObject, this GameObject will reverse direction
+    void Update(){
+        if(triggerd){
+            resetTime -= Time.deltaTime;
+            if(resetTime < 0){
+                triggerd = false;
+                resetTime = 3f;
+            }
+        }
+    }
+
+    
     private void OnTriggerEnter(Collider other)
     {
+        if(!triggerd){
+            Instantiate(ball, dispenser.transform.position, dispenser.transform.rotation);
+            ball.GetComponent<Rigidbody>().AddForce(dispenser.transform.forward);
+            triggerd = true;
+        }
         //Instantiate(ball, transform.position, transform.rotation);
         //ball.GetComponent<Rigidbody>().AddForce(dispenser.transform.forward);
         
