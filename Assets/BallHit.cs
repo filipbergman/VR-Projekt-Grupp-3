@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using System;
 
-public class damageDealer : MonoBehaviour
+public class BallHit : MonoBehaviour
 {
-    
+
+    public GameObject trap;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +15,11 @@ public class damageDealer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.transform.root.name == "Player"){
-        SceneManager.LoadScene("level6");
-        }
+        trap.GetComponent<disarm>().disarmTrap();
         
     }
 }

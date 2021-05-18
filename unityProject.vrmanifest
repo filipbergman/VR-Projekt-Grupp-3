@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.bqpussel.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "E:\\MAMF45\\Grupp3_2021\\BQPussel\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "D:\\Grupp_3_MAMF45\\VR-Projekt-Grupp-3\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "BQPussel [Testing]"

@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using System;
 
-public class damageDealer : MonoBehaviour
+public class tempTest : MonoBehaviour
 {
-    
     // Start is called before the first frame update
+    public GameObject balltarget;
     void Start()
     {
         
@@ -16,14 +14,11 @@ public class damageDealer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.transform.root.name == "Player"){
-        SceneManager.LoadScene("level6");
-        }
+        balltarget.GetComponent<Activated>().toggleActive();
         
     }
 }
