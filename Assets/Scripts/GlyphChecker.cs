@@ -10,18 +10,17 @@ public class GlyphChecker : MonoBehaviour
     private string input;
     public InputField field;
 
+    [SerializeField] private DoorOpener door;
+
     public void ReadStringInput(string codeText) 
     {
         input = codeText;
 
         if(input.ToLower() == code.ToLower()) 
         {
-            Debug.Log("RIGHT CODE!");
+            door.OpenDoor();
         } else {
             field.text = "";
-            Debug.Log(input);
         }
-
-
     }
 }
