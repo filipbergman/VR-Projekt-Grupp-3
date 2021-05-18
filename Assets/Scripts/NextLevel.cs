@@ -7,10 +7,18 @@ public class NextLevel : MonoBehaviour
 {
     public string levelName;
 
+    private GameObject levelTransition;
+
+    void Start() {
+        levelTransition = transform.parent.Find("LevelTransition").gameObject;
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.transform.root.name == "Player") {
+            
             SceneManager.LoadScene(levelName);
             other.gameObject.transform.root.position = Vector3.zero;
+            //levelTransition.SetActive(true);
         }
     }
 
