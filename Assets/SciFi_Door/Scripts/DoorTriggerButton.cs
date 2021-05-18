@@ -10,7 +10,7 @@ public class DoorTriggerButton : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            door.OpenDoor();
+            door.OpenDoor("32");
         }
 
         if (Input.GetKeyDown(KeyCode.G))
