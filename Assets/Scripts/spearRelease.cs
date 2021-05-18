@@ -8,6 +8,7 @@ public class spearRelease : MonoBehaviour
     public Transform trans;
     public Vector3 pointA;
     public Vector3 pointB;
+    public Vector3 deactivatedPos;
     public Vector3 to;
     public Vector3 from;
     public bool moving;
@@ -20,7 +21,9 @@ public class spearRelease : MonoBehaviour
     {
         pointA = trans.localPosition;
         pointB = trans.localPosition;
+        deactivatedPos = trans.localPosition;
         pointB.y += 2f;
+        deactivatedPos.y -= 0.5f;
         moving = false;
         time = 5f;
         to = pointB;
@@ -64,10 +67,10 @@ public class spearRelease : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
-        if (armed)
-        {
+        
+            if (armed) {
             triggerd = !triggerd;
         }
         
@@ -80,16 +83,17 @@ public class spearRelease : MonoBehaviour
             from = pointA;
         }
         
-
     }
 
     public void armTrap()
     {
         armed = true;
+        trans.localPosition = pointA;
     }
     public void dissarmTrap()
     {
         armed = false;
+        trans.localPosition = deactivatedPos;
     }
 }
     
