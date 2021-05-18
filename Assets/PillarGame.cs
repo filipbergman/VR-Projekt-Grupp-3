@@ -6,6 +6,7 @@ public class PillarGame : MonoBehaviour
 {
     public List<GameObject> pillars;
     public float speed = 0.001f;
+    public Activated ballTarget;
 
 
     private GameObject currPillar;
@@ -33,6 +34,8 @@ public class PillarGame : MonoBehaviour
                 } else {
                     won = true;
                     Debug.Log("YOU WON!");
+                    // TODO call balltarget
+                    ballTarget.toggleActive();
                 }
             } else {
                 foreach(GameObject mover in pillars) {

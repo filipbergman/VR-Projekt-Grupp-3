@@ -1784,6 +1784,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 844760292}
     m_Modifications:
     - target: {fileID: 678043277, guid: acd4fc441906a804fad24b3ab177b712, type: 3}
+      propertyPath: code
+      value: AROE
+      objectReference: {fileID: 0}
+    - target: {fileID: 678043277, guid: acd4fc441906a804fad24b3ab177b712, type: 3}
       propertyPath: field
       value: 
       objectReference: {fileID: 497781505}
