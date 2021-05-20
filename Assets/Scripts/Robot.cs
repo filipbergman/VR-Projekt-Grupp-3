@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 
 public class Robot : MonoBehaviour
@@ -160,7 +161,9 @@ public class Robot : MonoBehaviour
 
     private void Contact()
     {
-        Debug.Log("Robot contact with target!");
+        //Reset player position, restart level
+        target.transform.root.transform.position = Vector3.zero;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void TargetSpotted(Vector3 pos)

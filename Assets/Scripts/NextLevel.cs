@@ -9,6 +9,7 @@ public class NextLevel : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.transform.root.name == "Player") {
+            
             SceneManager.LoadScene(levelName);
             other.gameObject.transform.root.position = Vector3.zero;
         }

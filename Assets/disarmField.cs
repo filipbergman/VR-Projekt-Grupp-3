@@ -25,15 +25,15 @@ public class disarmField : MonoBehaviour
         
     }
     public void disarmTrap(){
-        spear_1.GetComponent<spearRelease>().dissarmTrap();
-        spear_2.GetComponent<spearRelease>().dissarmTrap();
-        spear_3.GetComponent<spearRelease>().dissarmTrap();
-        spear_4.GetComponent<spearRelease>().dissarmTrap();
-        spear_5.GetComponent<spearRelease>().dissarmTrap();
-        spear_6.GetComponent<spearRelease>().dissarmTrap();
-        spear_7.GetComponent<spearRelease>().dissarmTrap();
-        spear_8.GetComponent<spearRelease>().dissarmTrap();
-        spear_9.GetComponent<spearRelease>().dissarmTrap();
+        spear_1.GetComponent<spearRelease>().disarmTrap();
+        spear_2.GetComponent<spearRelease>().disarmTrap();
+        spear_3.GetComponent<spearRelease>().disarmTrap();
+        spear_4.GetComponent<spearRelease>().disarmTrap();
+        spear_5.GetComponent<spearRelease>().disarmTrap();
+        spear_6.GetComponent<spearRelease>().disarmTrap();
+        spear_7.GetComponent<spearRelease>().disarmTrap();
+        spear_8.GetComponent<spearRelease>().disarmTrap();
+        spear_9.GetComponent<spearRelease>().disarmTrap();
     }
     public void armTrap(){
         spear_1.GetComponent<spearRelease>().armTrap();
