@@ -1590,6 +1590,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8481020157248916129, guid: a710f7c5867f23340bd1d56ce15ccff7, type: 3}
+      propertyPath: contactDist
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481020157248916129, guid: a710f7c5867f23340bd1d56ce15ccff7, type: 3}
       propertyPath: controlPoints.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -2643,7 +2647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5678152057125032270, guid: 2117f07ca0dfc2940ae5fafc606dd5ca, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2117f07ca0dfc2940ae5fafc606dd5ca, type: 3}
@@ -3807,6 +3811,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2959818367510568768, guid: f0eedff6723a0d5419b3d1544ad8cb44, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797296202492634796, guid: f0eedff6723a0d5419b3d1544ad8cb44, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

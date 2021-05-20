@@ -10,9 +10,10 @@ public class ActivateLock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(doors == false) {
+        if (!doors)
             lockImage.enabled = true;
-        }
+        else
+            lockImage.enabled = false;
     }
 
     // Update is called once per frame
