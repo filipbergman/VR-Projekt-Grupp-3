@@ -23,7 +23,7 @@ public class damageDealer : MonoBehaviour
     {
         if(other.gameObject.transform.root.name == "Player") {
             other.gameObject.transform.root.transform.position = Vector3.zero;
-            SceneManager.LoadScene("level6");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

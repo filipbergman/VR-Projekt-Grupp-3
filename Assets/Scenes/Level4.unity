@@ -3934,7 +3934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5678152057125032270, guid: 2117f07ca0dfc2940ae5fafc606dd5ca, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2117f07ca0dfc2940ae5fafc606dd5ca, type: 3}
@@ -5413,6 +5413,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8481020157248916129, guid: a710f7c5867f23340bd1d56ce15ccff7, type: 3}
+      propertyPath: contactDist
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481020157248916129, guid: a710f7c5867f23340bd1d56ce15ccff7, type: 3}
       propertyPath: controlPoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -5506,7 +5510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8481020157248916158, guid: a710f7c5867f23340bd1d56ce15ccff7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a710f7c5867f23340bd1d56ce15ccff7, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallHit : MonoBehaviour
 {
 
-    public GameObject trap;
+    public GameObject[] traps;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,10 @@ public class BallHit : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        trap.GetComponent<disarm>().disarmTrap();
-        
+        if (other.tag == "Ball") {
+            foreach (GameObject trap in traps)
+                trap.GetComponent<disarm>().disarmTrap();
+                this.GetComponentInParent<Activated>().toggleActive();
+        }
     }
 }

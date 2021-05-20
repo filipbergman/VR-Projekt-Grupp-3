@@ -5,10 +5,10 @@ using UnityEngine;
 public class Activated : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Quaternion trapOpen;
-    private Quaternion trapClosed;
+    private Quaternion targetDown;
+    private Quaternion targetUP;
 
-    private float startTime = 0f;
+    public float startTime = 10f;
     private float resetTime = 0f;
     private float speed = 1f;
 
@@ -17,19 +17,21 @@ public class Activated : MonoBehaviour
     public float fullyOpen = 90f;
     void Start()
     {
-        trapOpen = Quaternion.Euler(0f, 0f, - fullyOpen);
-        trapClosed = Quaternion.identity;
+        targetDown = Quaternion.identity;
+        targetUP = Quaternion.Euler(0f, 0f,  -fullyOpen);
     }
 
     // Update is called once per frame
     void Update()
     {
         if(active){
-            startTime += Time.deltaTime / speed;
-            transform.localRotation = Quaternion.Lerp(trapClosed, trapOpen, startTime);
+            if(startTime < 2)
+                startTime += Time.deltaTime / speed;
+            transform.localRotation = Quaternion.Lerp(targetUP, targetDown, startTime);
         }else{
-            startTime += Time.deltaTime / speed;
-            transform.localRotation = Quaternion.Lerp(trapOpen, trapClosed, startTime);
+            if(startTime < 2)
+                startTime += Time.deltaTime / speed;
+            transform.localRotation = Quaternion.Lerp(targetDown, targetUP, startTime);
         }
         if(resetTime > 0){
             resetTime -= Time.deltaTime;
