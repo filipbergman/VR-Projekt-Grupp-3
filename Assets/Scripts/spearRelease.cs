@@ -15,6 +15,10 @@ public class spearRelease : MonoBehaviour
     public float resetTime = 1;
     public float t;
     public bool armed;
+    public AudioClip releaseSound;
+    public AudioClip resetSound;
+    public AudioClip disarmSound;
+    private AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +33,7 @@ public class spearRelease : MonoBehaviour
         from = pointA;
         t = 0f;
         armed = true;
+        audio = GetComponentInChildren<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,6 +48,7 @@ public class spearRelease : MonoBehaviour
                 trans.localPosition = Vector3.Lerp(from, to, t);
             }
             else {
+                audio.PlayOneShot(resetSound, 0.4f);
                 moving = false;
                 t = 0;
             }
@@ -51,7 +57,9 @@ public class spearRelease : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        
         if (armed) {
+            audio.PlayOneShot(releaseSound, 0.4f);
             moving = true;
             to = pointA;
             from = pointB;
@@ -65,6 +73,7 @@ public class spearRelease : MonoBehaviour
     }
     public void disarmTrap()
     {
+        audio.PlayOneShot(resetSound, 0.4f);
         armed = false;
         trans.localPosition = deactivatedPos;
         moving = false;

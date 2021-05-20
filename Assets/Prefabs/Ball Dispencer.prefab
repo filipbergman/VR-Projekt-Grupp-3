@@ -143,6 +143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   dispenser: {fileID: 6899647149746154840}
+  resetTime: 1
+  triggerd: 0
+  beep: {fileID: 8300000, guid: d96225e9745e4aa42ad31e4402fd25c3, type: 3}
 --- !u!1 &6899647149746154840
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,11 +12,14 @@ public class BallDispencer : MonoBehaviour
 
     public bool triggerd = false;
 
+    private AudioSource audio;
+
+    public AudioClip beep;
     void Start()
     {
         Instantiate(ball, dispenser.transform.position, dispenser.transform.rotation);
         ball.GetComponent<Rigidbody>().AddForce(dispenser.transform.right*100);
-        
+        audio = GetComponent<AudioSource>();
     }
 
     void Update(){
@@ -33,6 +36,7 @@ public class BallDispencer : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(!triggerd){
+            audio.PlayOneShot(beep, 0.4f);
             Instantiate(ball, dispenser.transform.position, dispenser.transform.rotation);
             ball.GetComponent<Rigidbody>().AddForce(dispenser.transform.forward);
             triggerd = true;

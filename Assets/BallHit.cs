@@ -6,10 +6,11 @@ public class BallHit : MonoBehaviour
 {
 
     public GameObject[] traps;
+    private AudioSource hitSound;
     // Start is called before the first frame update
     void Start()
     {
-        
+        hitSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -20,6 +21,7 @@ public class BallHit : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Ball") {
+            hitSound.Play();
             foreach (GameObject trap in traps)
                 trap.GetComponent<disarm>().disarmTrap();
                 this.GetComponentInParent<Activated>().toggleActive();
