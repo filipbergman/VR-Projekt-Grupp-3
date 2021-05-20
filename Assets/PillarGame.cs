@@ -55,9 +55,11 @@ public class PillarGame : MonoBehaviour
                 }
             }
 
-            if (Mathf.Abs(currMover.transform.localPosition.z) >= 0.483f) 
+            if (currMover.transform.localPosition.z >= 0.483f) {
+                moveUp = -1;
+            } else if (currMover.transform.localPosition.z <= -0.483f) 
             {
-                moveUp *= -1;
+                moveUp = 1;
             }
 
             if (!won)
