@@ -5,6 +5,7 @@ using UnityEngine;
 public class DoorOpener : MonoBehaviour
 {
     private Animator animator;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -13,12 +14,13 @@ public class DoorOpener : MonoBehaviour
 
     public void OpenDoor()
     {
-            animator.SetBool("isOpening", true);    
+        Debug.Log("OPEN");
+        animator.SetBool("isOpening", true);   
     }
 
-    public void CloseDoor() {
-        
-           animator.SetBool("isOpening", false);
-        }
-
+    public void CloseDoor()
+    {
+        animator.SetBool("isOpening", false);
     }
+}
+

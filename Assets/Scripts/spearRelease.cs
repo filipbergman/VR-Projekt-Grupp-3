@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class spearRelease : MonoBehaviour
 {
-    public bool triggerd = false;
     public Transform trans;
     public Vector3 pointA;
     public Vector3 pointB;
+    public Vector3 deactivatedPos;
     public Vector3 to;
     public Vector3 from;
     public bool moving;
-    public float time;
+    public float retractionTime;
     public float resetTime = 1;
     public float t;
     public bool armed;
@@ -20,9 +20,11 @@ public class spearRelease : MonoBehaviour
     {
         pointA = trans.localPosition;
         pointB = trans.localPosition;
-        pointB.y += 2f;
+        deactivatedPos = trans.localPosition;
+        pointB.y += 2.4f;
+        deactivatedPos.y -= 0.5f;
         moving = false;
-        time = 1;
+        retractionTime = 2f;
         to = pointB;
         from = pointA;
         t = 0f;
@@ -34,63 +36,39 @@ public class spearRelease : MonoBehaviour
     {
         if (moving)
         {
-
-            if(t < 1f)
+            if (t < 1f)
             {
-                t += Time.deltaTime / time;
+                t += Time.deltaTime / retractionTime;
 
-                trans.localPosition = Vector3.Lerp(to, from, t);
-
-                
+                trans.localPosition = Vector3.Lerp(from, to, t);
             }
-
-            moving = false;
-        }
-        if (triggerd)
-        {
-            resetTime -= Time.deltaTime;
-            if(resetTime < 0)
-            {
-                resetTime = 1;
-                triggerd = false;
-                moving = true;
-                to = pointA;
-                from = pointB;
+            else {
+                moving = false;
+                t = 0;
             }
         }
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
-        if (armed)
-        {
-            triggerd = !triggerd;
-        }
-        
-        
-        if (triggerd)
-        {
-            
-            moving = true;
-            to = pointB;
-            from = pointA;
-        }
-        else
-        {
+        if (armed) {
             moving = true;
             to = pointA;
             from = pointB;
         }
-
     }
 
     public void armTrap()
     {
         armed = true;
+        trans.localPosition = pointA;
     }
-    public void dissarmTrap()
+    public void disarmTrap()
     {
         armed = false;
+        trans.localPosition = deactivatedPos;
+        moving = false;
+        t = 0;
     }
 }
     

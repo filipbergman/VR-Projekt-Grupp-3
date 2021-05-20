@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 
 public class Robot : MonoBehaviour
@@ -15,11 +16,10 @@ public class Robot : MonoBehaviour
     }
 
     [Header("Setup")]
-    [Tooltip("The actual GameObject that the robot will target. Must have a collider.")]
-    public GameObject target;
     public GameObject[] controlPoints;
     [Header("Settings")]
-    public float patrollSpeed = 2f;
+    public bool loop = false;
+    public float patrolSpeed = 2f;
     public float chaseSpeed = 4f;
     public float searchRotationSpeed = 30f;
     public float fieldOfView = 45;
@@ -36,6 +36,7 @@ public class Robot : MonoBehaviour
     public bool showControlPoints = false;
 
     private NavMeshAgent agent;
+    private GameObject target;
     private GameObject indicatorSphere;
     private int currentControlPointIndex = 0;
     private GameObject currentControlPoint;
@@ -45,6 +46,7 @@ public class Robot : MonoBehaviour
     void Start()
     {
         agent = transform.GetComponent<NavMeshAgent>();
+        target = GameObject.Find("Player").transform.Find("SteamVRObjects").Find("VRCamera").Find("CameraCollider").gameObject;
 
         if (controlPoints.Length < 1)
             Debug.LogError("Please add at least one Control Point!");
@@ -113,7 +115,7 @@ public class Robot : MonoBehaviour
     {
         StopAllCoroutines();
         agent.isStopped = false;
-        agent.speed = patrollSpeed;
+        agent.speed = patrolSpeed;
 
         if (!(Vector3.Distance(transform.position, currentControlPoint.transform.position) < controlPointDistBias))
             agent.SetDestination(currentControlPoint.transform.position);
@@ -131,7 +133,7 @@ public class Robot : MonoBehaviour
     {
         RaycastHit hit;
 
-        Vector3 rayOrigin = transform.position;// + Vector3.up * 2;
+        Vector3 rayOrigin = transform.position;
 
         Vector3 toTarget = (target.transform.position - rayOrigin) + (Vector3.up * 0.5f);
         float angleToTarget = Vector3.Angle(transform.forward, toTarget);
@@ -159,7 +161,9 @@ public class Robot : MonoBehaviour
 
     private void Contact()
     {
-        Debug.Log("Robot contact with target!");
+        //Reset player position, restart level
+        target.transform.root.transform.position = Vector3.zero;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void TargetSpotted(Vector3 pos)
@@ -172,27 +176,25 @@ public class Robot : MonoBehaviour
 
     private void NextControlPoint()
     {
-        //Go to next control point unless the robot is at either end of the path
-        //If it is, switch direction
-        if (forwardDirection)
-        {
-            if (currentControlPointIndex >= controlPoints.Length - 1)
-            {
-                forwardDirection = false;
-                currentControlPointIndex--;
+        if (!loop) {
+            //Go to next control point unless the robot is at either end of the path
+            //If it is, switch direction
+            if (forwardDirection) {
+                if (currentControlPointIndex >= controlPoints.Length - 1) {
+                    forwardDirection = false;
+                    currentControlPointIndex--;
+                } else
+                    currentControlPointIndex++;
+            } else {
+                if (currentControlPointIndex <= 0) {
+                    forwardDirection = true;
+                    currentControlPointIndex++;
+                } else
+                    currentControlPointIndex--;
             }
-            else
-                currentControlPointIndex++;
-        }
-        else
-        {
-            if (currentControlPointIndex <= 0)
-            {
-                forwardDirection = true;
-                currentControlPointIndex++;
-            }
-            else
-                currentControlPointIndex--;
+        } 
+        else {
+            currentControlPointIndex = (currentControlPointIndex + 1) % controlPoints.Length;
         }
 
         //Actually update control point
