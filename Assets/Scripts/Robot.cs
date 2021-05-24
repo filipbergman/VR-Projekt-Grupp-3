@@ -42,11 +42,13 @@ public class Robot : MonoBehaviour
     private GameObject currentControlPoint;
     private bool forwardDirection;
     private Vector3 targetLastSeenAt;
+    private AudioSource audio;
 
     void Start()
     {
         agent = transform.GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform.Find("SteamVRObjects").Find("VRCamera").Find("CameraCollider").gameObject;
+        audio = GetComponentInChildren<AudioSource>();
 
         if (controlPoints.Length < 1)
             Debug.LogError("Please add at least one Control Point!");
