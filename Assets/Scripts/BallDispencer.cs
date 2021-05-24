@@ -8,16 +8,19 @@ public class BallDispencer : MonoBehaviour
     public GameObject ball;
     public GameObject dispenser;
 
-    public float resetTime = 3f;
+    public float resetTime = 1f;
 
     public bool triggerd = false;
 
     private AudioSource audio;
+    private Vector3 ballSpawnPos;
 
     public AudioClip beep;
     void Start()
     {
-        Instantiate(ball, dispenser.transform.position, dispenser.transform.rotation);
+        ballSpawnPos = dispenser.transform.position;
+        ballSpawnPos.z += 0.03f;
+        Instantiate(ball, ballSpawnPos, dispenser.transform.rotation);
         ball.GetComponent<Rigidbody>().AddForce(dispenser.transform.right*100);
         audio = GetComponent<AudioSource>();
     }
@@ -27,7 +30,7 @@ public class BallDispencer : MonoBehaviour
             resetTime -= Time.deltaTime;
             if(resetTime < 0){
                 triggerd = false;
-                resetTime = 3f;
+                resetTime = 1f;
             }
         }
     }
@@ -37,7 +40,7 @@ public class BallDispencer : MonoBehaviour
     {
         if(!triggerd){
             audio.PlayOneShot(beep, 0.4f);
-            Instantiate(ball, dispenser.transform.position, dispenser.transform.rotation);
+            Instantiate(ball, ballSpawnPos, dispenser.transform.rotation);
             ball.GetComponent<Rigidbody>().AddForce(dispenser.transform.forward);
             triggerd = true;
         }

@@ -1,44 +1,9 @@
 fileFormatVersion: 2
-guid: 76b9ecd8b02179946a6ab48d2dde2ef9
+guid: 38b0de089c1481642937f0d5c53c5cd9
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: BlackDetail
-    second: {fileID: 2100000, guid: caa90b524d6cca348a2b2498844ccc1a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Floor
-    second: {fileID: 2100000, guid: 9c21a4b6b2fa1c044b454bbb73d66f34, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Pipes
-    second: {fileID: 2100000, guid: a3f971a8c050c9047a767a37a25f2427, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Rim
-    second: {fileID: 2100000, guid: f7388cff9710edf469df20b13b81c9e7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wheel
-    second: {fileID: 2100000, guid: 9f5fa9e9ec75b514a9d4336cedf66ef0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: WhiteLight
-    second: {fileID: 2100000, guid: 6713cef5c67f4184a83d366019840a52, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: WhiteWall
-    second: {fileID: 2100000, guid: 9b21162129cd5f54391e89fb5c43fd36, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
