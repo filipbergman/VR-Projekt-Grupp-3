@@ -1763,10 +1763,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8967534479036698272, guid: a2338f48aa63ccf4c91f9675ff87d1cb, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 8967534479036698273, guid: a2338f48aa63ccf4c91f9675ff87d1cb, type: 3}
       propertyPath: m_Name
       value: AmbientAudio
