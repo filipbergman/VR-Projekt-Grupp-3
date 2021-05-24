@@ -739,7 +739,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 511237750657959251, guid: 7579dabf836da984d82ff4cc8d26a11c, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 511237750657959251, guid: 7579dabf836da984d82ff4cc8d26a11c, type: 3}
       propertyPath: m_LocalScale.z
@@ -878,7 +878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4098083786407755199, guid: e89219f92f395544a9f3acec8a8a0dea, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4098083786407755199, guid: e89219f92f395544a9f3acec8a8a0dea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1380,9 +1380,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5678152057124047404, guid: 2117f07ca0dfc2940ae5fafc606dd5ca, type: 3}
+      propertyPath: m_TargetDisplay
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5678152057124561206, guid: 2117f07ca0dfc2940ae5fafc606dd5ca, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5678152057124561206, guid: 2117f07ca0dfc2940ae5fafc606dd5ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1759,6 +1763,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8967534479036698272, guid: a2338f48aa63ccf4c91f9675ff87d1cb, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8967534479036698273, guid: a2338f48aa63ccf4c91f9675ff87d1cb, type: 3}
       propertyPath: m_Name
       value: AmbientAudio
@@ -1970,7 +1978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8773775567362341766, guid: 045c98a4c1d55d9478282f4373817439, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8773775567362341766, guid: 045c98a4c1d55d9478282f4373817439, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3149,7 +3157,7 @@ Transform:
   - {fileID: 906851822769918294}
   - {fileID: 8397401098426301081}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &8492363620092909560
 GameObject:
