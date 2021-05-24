@@ -73,7 +73,7 @@ public class spearRelease : MonoBehaviour
     }
     public void disarmTrap()
     {
-        audio.PlayOneShot(resetSound, 0.4f);
+        audio.PlayOneShot(disarmSound, 0.4f);
         armed = false;
         trans.localPosition = deactivatedPos;
         moving = false;
