@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028432, g: 0.22571507, b: 0.30692372, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028437, g: 0.22571509, b: 0.30692375, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1675,6 +1675,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3553944645474503974, guid: c0b4a1e938ab23641b33f5cde683bb43, type: 3}
   m_PrefabInstance: {fileID: 1494849733}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1494849735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3553944644820258926, guid: c0b4a1e938ab23641b33f5cde683bb43, type: 3}
+  m_PrefabInstance: {fileID: 1494849733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1494849736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494849735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a6a70209b6e6345bfe18b02314a54e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: Level3
+  internalProcessPath: 
+  internalProcessArgs: 
+  loadAdditive: 0
+  loadAsync: 1
+  loadingScreen: {fileID: 0}
+  progressBarEmpty: {fileID: 0}
+  progressBarFull: {fileID: 0}
+  loadingScreenWidthInMeters: 6
+  progressBarWidthInMeters: 3
+  loadingScreenDistance: 0
+  loadingScreenTransform: {fileID: 0}
+  progressBarTransform: {fileID: 0}
+  front: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
+  top: {fileID: 0}
+  bottom: {fileID: 0}
+  backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  showGrid: 0
+  fadeOutTime: 0.5
+  fadeInTime: 0.5
+  postLoadSettleTime: 0
+  loadingScreenFadeInTime: 1
+  loadingScreenFadeOutTime: 0.25
+  autoTriggerOnEnable: 0
 --- !u!1001 &1605574357
 PrefabInstance:
   m_ObjectHideFlags: 0
